@@ -1,21 +1,19 @@
 import React from "react";
-import styles from "./App.module.css";
-import { BrowserRouter as Router, Route, Link, Routes } from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { MovieDetails } from "./pages/MovieDetails";
 import { LandingPage } from "./pages/LandingPage";
+import { NavBar } from "./components/NavBar";
 
 export function App() {
   return (
     <Router>
       <header>
-        <Link to="/">
-          <h1 className={styles.title}>Movies</h1>
-        </Link>
+        <NavBar />
       </header>
       <main>
         <Routes>
-          <Route path="/movies/:movieId" element={<MovieDetails />}/>
-          <Route path="/" element={<LandingPage />}/>
+          <Route path="/movies/:movieId" element={<MovieDetails />} />
+          <Route path="/" element={<LandingPage />} />
         </Routes>
       </main>
     </Router>

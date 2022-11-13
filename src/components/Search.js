@@ -8,7 +8,12 @@ export function Search() {
   const query = useQuery();
   const search = query.get("search");
 
+  const [searchText, setSearchText] = useState("");
   const navigate = useNavigate();
+
+  useEffect(() => {
+    setSearchText(search || "");
+  }, [search]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -19,8 +24,8 @@ export function Search() {
         <input
           className={styles.searchInput}
           type="text"
-          value={search}
-          placeholder="Title"
+          value={searchText}
+          placeholder="Search..."
           aria-label="Search Movies"
           onChange={(e) => {
             const value = e.target.value;

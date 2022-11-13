@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { get } from "../utils/httpClient";
-import { useQuery } from "../hooks/useQuery";
 import { MovieCard } from "./MovieCard";
 import styles from "./MoviesGrid.module.css";
 import { Spinner } from "./Spinner";
@@ -25,8 +24,8 @@ export function MoviesGrid({ search }) {
     });
   }, [search, page]);
 
-  if(!isLoading && movies.length === 0){
-    return <Empty/>
+  if (!isLoading && movies.length === 0) {
+    return <Empty />;
   }
 
   return (
@@ -37,8 +36,8 @@ export function MoviesGrid({ search }) {
       loader={<Spinner />}
     >
       <ul className={styles.moviesGrid}>
-        {movies.map((movie) => {
-          return <MovieCard key={movie.id} movie={movie} />;
+        {movies.map((movie, index) => {
+          return <MovieCard key={index} movie={movie} />;
         })}
       </ul>
     </InfiniteScroll>
